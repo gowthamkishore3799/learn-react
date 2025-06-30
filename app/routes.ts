@@ -1,9 +1,16 @@
-import { route, type RouteConfig } from "@react-router/dev/routes";
+import { index, route, type RouteConfig } from "@react-router/dev/routes";
 
 export default [
-    route("/home", "routes/home.tsx"),
-    route("/image", "routes/image.tsx"),
-    route("/form", "routes/form.tsx"),
-    route("/tic-tac-toe", "routes/tic-tac-toe.tsx")
+
+    route("home", "routes/home.tsx", [
+        index("routes/dashboard.tsx"),
+        route("image", "routes/image.tsx"),
+        route("form", "routes/form.tsx"),
+        route("tic-tac-toe", "routes/tic-tac-toe.tsx"),
+        route("new-home", "welcome/welcome/newHeader.tsx"),
+        route("dashboard", "routes/newDashboard.tsx"),
+    ])
+    
+   
 ] satisfies RouteConfig;
 

@@ -18,7 +18,7 @@ export default function ImageUpload() {
     }
   return (
     <>
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid py-100px grid-cols-4 gap-4">
         <div className="col-span-2">
           <Dragger name="file" multiple={true} onDrop={(e) => console.log(e, "EEE")} action={(file)=>{
             handleUpload(file);

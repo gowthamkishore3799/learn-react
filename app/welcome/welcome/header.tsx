@@ -2,14 +2,15 @@ import { DesktopOutlined } from "@ant-design/icons";
 import {
     Layout, Menu
 } from "antd";
+import { Outlet } from "react-router";
 import type { MenuItem } from "~/interface/interfaces";
 
-const { Sider } = Layout;
+const { Sider, Content } = Layout;
 
 export default function Header(){
     const items: MenuItem[] = [{
         label: (
-            <a href="/image" target="_self">
+            <a href="/home/image" target="_self">
              Image
             </a>
           ),
@@ -17,7 +18,7 @@ export default function Header(){
         icon: <DesktopOutlined />,
     },{
         label:  (
-            <a href="/form" target="_self">
+            <a href="/home/form" target="_self">
              Form
             </a>
           ),
@@ -63,12 +64,15 @@ export default function Header(){
                 <p className="text-rose-400 px-[50%] basis-2/3">Adobe</p>
             </div>
         </div>
-        <Layout className="h-screen" hasSider>
+        <Layout className="h-max" hasSider>
         <Sider className="py-[30px]"> <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items}/> </Sider>
         <Layout>
-        
+            <Content className="px-auto">
+            <Outlet/>
+            </Content>
         </Layout>
         </Layout>
+       
         </>
     )
 }
