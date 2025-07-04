@@ -16,10 +16,20 @@
 
 }
 
+.body-title{
+    background-color: #f7f7f7; 
+}
+
+img{
+    clip-path: inset(45px 50px 15px 0 round 50px);
+    shape-outside: inset(40px 40px 10px 0 round 50px);
+}
+
 .body-heading{
     padding: 3em;
     display: flex;
     justify-content: center;
+    
     span{
         color:red;
         align-self: center;
@@ -33,6 +43,7 @@
     border-color: grey;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     .title{
         color:grey;
         font-size: 16px;
