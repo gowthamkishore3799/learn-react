@@ -5,6 +5,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData
 } from "react-router";
 
 import type { Route } from "./+types/root";
@@ -42,7 +43,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  const data = useLoaderData();
+  console.log(data, "DATa")
+  return (
+    <>
+    {/* {isLoading && <Loader />} */}
+    <Outlet/>
+  </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

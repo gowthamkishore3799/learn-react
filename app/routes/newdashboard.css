@@ -1,3 +1,4 @@
+@import "tailwindcss";
 
 .dashboard{
     height: 100vh;
@@ -121,4 +122,10 @@ img{
     
 }
 
+}
+
+
+@theme {
+    --color-midnight: #cad3db;
+    --color-darker-midnight: #86929c;
 }

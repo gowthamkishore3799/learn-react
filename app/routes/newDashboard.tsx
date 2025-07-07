@@ -1,7 +1,7 @@
 
 import { CloseOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Radio, Select } from "antd";
-import type { ReactElement } from "react";
+import { useState, type ReactElement } from "react";
 import { COLORS } from "~/enum/color";
 import "./newdashboard.css";
 function Header(){
@@ -18,7 +18,6 @@ type Arr ={
 }
 
 function Options({colors, value, lastElement}:{colors: Arr[], value:string, lastElement: boolean}) {
-  console.log(lastElement)
   return (
       <div className={`content ${lastElement ? "no-border": ""}`}>
         <div className="leftSide">
@@ -173,11 +172,15 @@ Red
     );
 }
 
-function Footer(){
-  return (<>
-  <div className="flex flex-row justify-center items-center">
-    <div className="">
-    <svg
+function Stars(){
+  let arr = new Array(5).fill(0);
+  const [rating, setRating] = useState("-1");
+  return (
+    <>
+    {/* <div className="py-[10] flex-row"> */}
+    {arr.map((element, index)=>(
+     <div className="py-[10px]">
+      <svg
     fill="#000000"
     width="100px"
     height="100px"
@@ -186,19 +189,43 @@ function Footer(){
     data-name="Line Color"
     xmlns="http://www.w3.org/2000/svg"
     className="icon line-color"
+    data-index={index}
   >
     <polygon
       id="primary"
+      data-index={index}
       points="12 4 9.22 9.27 3 10.11 7.5 14.21 6.44 20 12 17.27 17.56 20 16.5 14.21 21 10.11 14.78 9.27 12 4"
-      style={{
-        fill: "none",
-        stroke: "#FF0000",
-        strokeLinecap: "round",
-        strokeLinejoin: "round",
-        strokeWidth: 2,
+      className={
+        (index > parseInt(rating)
+          ? "stroke-black fill-none"
+          : "stroke-yellow-200 fill-yellow-200") +
+        " hover:stroke-yellow-200 hover:fill-yellow-200"
+      }
+      onMouseOver={(e:React.MouseEvent<SVGPathElement>)=>{
+        const target = e.target as SVGPolygonElement;
+        const index: string = target.getAttribute('data-index') as string;
+        setRating(index);
       }}
     />
   </svg>
+   </div>
+    ))}
+    {/* </div> */}
+    </>
+  )
+}
+
+function Footer(){
+
+  return (<>
+  <div className="flex flex-col justify-center items-center p-[10px] border-black border-[1px]">
+    <div className="flex flex-row">
+      <Stars/>
+      </div>
+      <div className="footer">
+        <Button value="Add More" onClick={(e)=>{
+           console.log(e, "Submit")
+        }}>Submit</Button>
       </div>
   </div>
   </>)

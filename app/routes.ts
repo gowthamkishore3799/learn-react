@@ -9,8 +9,12 @@ export default [
         route("tic-tac-toe", "routes/tic-tac-toe.tsx"),
         route("new-home", "welcome/welcome/newHeader.tsx"),
         route("dashboard", "routes/newDashboard.tsx"),
-    ])
+    ]),
     
+
+    route("route", "routes/route.tsx"),
+
+    route("*", "routes/defaultRouter.tsx")
    
 ] satisfies RouteConfig;
 
